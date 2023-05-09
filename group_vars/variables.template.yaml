@@ -1,0 +1,73 @@
+variables:
+  - name: aks-container-deployment_name
+    type: string
+    description: The name of the AKS container deployment
+  - name: client_id
+    type: string
+  - name: data-hub-connection_name
+    type: string
+    description: The name of the Data Hub connection
+  - name: data-lake-connection_name
+    type: string
+    description: The name of the Data Lake connection
+  - name: gitops_repo_repo
+    type: string
+    description: The short name of the repository (i.e. the part after the org/group name)
+  - name: oracle-database-connection_name
+    type: string
+    description: The name of the Oracle Database connection
+  - name: region
+    type: string
+    description: The Azure location where the resource group will be provisioned
+  - name: resource_group_name
+    type: string
+    description: The name of the resource group
+  - name: salesforce-connection_name
+    type: string
+    description: The name of the Salesforce connection
+  - name: server_url
+    type: string
+    description: The url for the OpenShift api
+  - name: subscription_id
+    type: string
+  - name: tenant_id
+    type: string
+  - name: util-storage-class-manager_block_storage_class
+    type: string
+    description: The storage class to use for Block storage volumes
+  - name: util-storage-class-manager_file_storage_class
+    type: string
+    description: The storage class to use for File storage volumes
+  - name: util-storage-class-manager_rwo_storage_class
+    type: string
+    description: ReadWriteOnce access type Storage Class
+  - name: util-storage-class-manager_rwx_storage_class
+    type: string
+    description: ReadWriteMany access type Storage Class
+  - name: gitops_repo_host
+    type: string
+    description: >-
+      The host for the git repository. The git host used can be a GitHub, GitHub
+      Enterprise, Gitlab, Bitbucket, Gitea or Azure DevOps server. If the host
+      is null assumes in-cluster Gitea instance will be used.
+    value: ''
+  - name: gitops_repo_org
+    type: string
+    description: >-
+      The org/group where the git repository exists/will be provisioned. If the
+      value is left blank then the username org will be used.
+    value: ''
+  - name: gitops_repo_project
+    type: string
+    description: >-
+      The project that will be used for the git repo. (Primarily used for Azure
+      DevOps repos)
+    value: ''
+  - name: gitops_repo_type
+    type: string
+    description: The type of the hosted git repository (github or gitlab).
+    value: ''
+  - name: gitops_repo_username
+    type: string
+    description: The username of the user with access to the repository
+    value: ''

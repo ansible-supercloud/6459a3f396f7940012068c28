@@ -1,0 +1,137 @@
+apiVersion: cloudnativetoolkit.dev/v2
+kind: Solution
+metadata:
+  name: Demo
+  annotations:
+    displayName: >-
+      Solution based on Azure VNet, AKS Container Deployment and OpenShift
+      development tools, Cloud Pak for Integration, Oracle Database Connection,
+      Salesforce Connection, Data Lake Connection, Data Hub Connection on Azure.
+    description: >-
+      Solution based on Azure VNet, AKS Container Deployment and OpenShift
+      development tools, Cloud Pak for Integration, Oracle Database Connection,
+      Salesforce Connection, Data Lake Connection, Data Hub Connection in
+      Production reference architecture deployed on Azure
+spec:
+  stack:
+    - name: 101-azure-vnet-std
+      layer: infrastructure
+      description: Azure base infrastructure
+      version: v1.0.1
+    - name: 220-dev-tools
+      layer: software
+      description: Provisions development tools in an OpenShift cluster
+      version: v1.0.0
+    - name: 280-integration-platform-multicloud
+      layer: software
+      description: GitOps deployment of Cloud Pak for Integration
+      version: v1.0.0
+    - name: 350-data-hub-connection
+      layer: software
+      description: Data Hub Connection
+      version: v1.0.0
+    - name: 350-data-lake-connection
+      layer: software
+      description: Data Lake Connection
+      version: v1.0.0
+    - name: 350-oracle-database-connection
+      layer: software
+      description: Oracle Database Connection
+      version: v1.0.0
+    - name: 350-salesforce-connection
+      layer: software
+      description: Salesforce Connection
+      version: v1.0.0
+    - name: 540-aks-container-deployment
+      layer: software
+      description: AKS Container Deployment
+      version: v1.0.0
+  version: v1.0.0
+  variables:
+    - name: aks-container-deployment_name
+      type: string
+      description: The name of the AKS container deployment
+    - name: client_id
+      type: string
+    - name: client_secret
+      type: string
+      sensitive: true
+    - name: cluster_login_token
+      type: string
+      description: Token used for authentication
+      sensitive: true
+    - name: data-hub-connection_name
+      type: string
+      description: The name of the Data Hub connection
+    - name: data-lake-connection_name
+      type: string
+      description: The name of the Data Lake connection
+    - name: gitops_repo_repo
+      type: string
+      description: >-
+        The short name of the repository (i.e. the part after the org/group
+        name)
+    - name: oracle-database-connection_name
+      type: string
+      description: The name of the Oracle Database connection
+    - name: region
+      type: string
+      description: The Azure location where the resource group will be provisioned
+    - name: resource_group_name
+      type: string
+      description: The name of the resource group
+    - name: salesforce-connection_name
+      type: string
+      description: The name of the Salesforce connection
+    - name: server_url
+      type: string
+      description: The url for the OpenShift api
+    - name: subscription_id
+      type: string
+    - name: tenant_id
+      type: string
+    - name: util-storage-class-manager_block_storage_class
+      type: string
+      description: The storage class to use for Block storage volumes
+    - name: util-storage-class-manager_file_storage_class
+      type: string
+      description: The storage class to use for File storage volumes
+    - name: util-storage-class-manager_rwo_storage_class
+      type: string
+      description: ReadWriteOnce access type Storage Class
+    - name: util-storage-class-manager_rwx_storage_class
+      type: string
+      description: ReadWriteMany access type Storage Class
+    - name: gitops_repo_host
+      type: string
+      description: >-
+        The host for the git repository. The git host used can be a GitHub,
+        GitHub Enterprise, Gitlab, Bitbucket, Gitea or Azure DevOps server. If
+        the host is null assumes in-cluster Gitea instance will be used.
+      value: ''
+    - name: gitops_repo_org
+      type: string
+      description: >-
+        The org/group where the git repository exists/will be provisioned. If
+        the value is left blank then the username org will be used.
+      value: ''
+    - name: gitops_repo_project
+      type: string
+      description: >-
+        The project that will be used for the git repo. (Primarily used for
+        Azure DevOps repos)
+      value: ''
+    - name: gitops_repo_token
+      type: string
+      description: The personal access token used to access the repository
+      value: ''
+      sensitive: true
+    - name: gitops_repo_type
+      type: string
+      description: The type of the hosted git repository (github or gitlab).
+      value: ''
+    - name: gitops_repo_username
+      type: string
+      description: The username of the user with access to the repository
+      value: ''
+  files: []
